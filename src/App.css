@@ -73,11 +73,11 @@ button:hover {
 }
 
 .skyblue {
-  background-color: skyblue;
+  background-color: #6495ed; /* 코발트 블루 */
 }
 
 .lightpink {
-  background-color: lightpink;
+  background-color: #ff69b4; /* 핫 핑크 */
 }
 
 .gray {
