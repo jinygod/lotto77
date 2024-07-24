@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import "./App.css";
 
 function generateNewNumbers() {
-  let numbers = [];
-  while (numbers.length < 6) {
-    let randomNum = Math.ceil(Math.random() * 45);
-    if (!numbers.includes(randomNum)) {
-      numbers.push(randomNum);
+  let allNumbers = [];
+  for (let i = 0; i < 5; i++) {
+    let numbers = [];
+    while (numbers.length < 6) {
+      let randomNum = Math.ceil(Math.random() * 45);
+      if (!numbers.includes(randomNum)) {
+        numbers.push(randomNum);
+      }
     }
+    numbers.sort((a, b) => a - b); // 오름차순 정렬
+    allNumbers.push(numbers);
   }
-  numbers.sort((a, b) => a - b); // 오름차순 정렬
-  return numbers;
+  return allNumbers;
 }
 
 function getClassname(number) {
@@ -28,15 +32,20 @@ function getClassname(number) {
 }
 
 function App() {
-  const [numbers, setNumbers] = useState([]);
+  const [numberSets, setNumberSets] = useState([]);
 
   const handleGenerateNumbers = () => {
-    const newNumbers = generateNewNumbers();
-    setNumbers(newNumbers);
+    const newNumberSets = generateNewNumbers();
+    setNumberSets(newNumberSets);
   };
 
   return (
     <div className="lottery-container">
+      <img
+        src={`${process.env.PUBLIC_URL}/main.png`}
+        alt="Lotto"
+        className="lotto-image"
+      />
       <div className="title">LOTTO77</div>
       <div className="subtitle">자신만의 로또 번호를 생성하세요</div>
       <p className="description">
@@ -45,16 +54,18 @@ function App() {
       </p>
       <button onClick={handleGenerateNumbers}>번호 생성</button>
       <div className="numberlist-container">
-        <div className="numberlist">
-          {numbers.map((number, index) => (
-            <span
-              key={index}
-              className={`numberlist-item ${getClassname(number)}`}
-            >
-              {number}
-            </span>
-          ))}
-        </div>
+        {numberSets.map((numbers, index) => (
+          <div key={index} className="numberlist">
+            {numbers.map((number, numIndex) => (
+              <span
+                key={numIndex}
+                className={`numberlist-item ${getClassname(number)}`}
+              >
+                {number}
+              </span>
+            ))}
+          </div>
+        ))}
       </div>
     </div>
   );
