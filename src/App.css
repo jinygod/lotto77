@@ -1,38 +1,89 @@
-.App {
+.title {
+  font-size: 2.5rem; /* 제목 글자 크기 */
+  font-weight: bold; /* 제목 굵기 */
   text-align: center;
+  margin-top: 20px;
+  color: #333; /* 제목 글자 색상 */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.subtitle {
+  font-size: 1.2rem; /* 부제목 글자 크기 */
+  text-align: center;
+  margin-bottom: 20px;
+  color: #666; /* 부제목 글자 색상 */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.lottery-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.lotto-number {
+  font-size: 2rem; /* 로또 번호 글자 크기 */
+  text-align: center;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  font-size: 1rem; /* 버튼 글자 크기 */
+  padding: 10px 20px;
+  background-color: #007bff; /* 버튼 배경색 */
+  color: #fff; /* 버튼 글자 색상 */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* 호버 시 버튼 배경색 변경 */
+}
+
+.numberlist-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.numberlist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.numberlist-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.yellow {
+  background-color: darkgoldenrod;
+}
+
+.skyblue {
+  background-color: skyblue;
+}
+
+.lightpink {
+  background-color: lightpink;
+}
+
+.gray {
+  background-color: gray;
+}
+
+.green {
+  background-color: green;
 }
