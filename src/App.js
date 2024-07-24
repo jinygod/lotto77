@@ -3,6 +3,8 @@ import "./App.css";
 
 function generateNewNumbers() {
   let allNumbers = [];
+  let highlightIndex = Math.floor(Math.random() * 5); // 0부터 4까지의 인덱스 중 하나를 선택
+
   for (let i = 0; i < 5; i++) {
     let numbers = [];
     while (numbers.length < 6) {
@@ -14,7 +16,8 @@ function generateNewNumbers() {
     numbers.sort((a, b) => a - b); // 오름차순 정렬
     allNumbers.push(numbers);
   }
-  return allNumbers;
+
+  return { allNumbers, highlightIndex };
 }
 
 function getClassname(number) {
@@ -33,10 +36,12 @@ function getClassname(number) {
 
 function App() {
   const [numberSets, setNumberSets] = useState([]);
+  const [highlightIndex, setHighlightIndex] = useState(null);
 
   const handleGenerateNumbers = () => {
-    const newNumberSets = generateNewNumbers();
-    setNumberSets(newNumberSets);
+    const { allNumbers, highlightIndex } = generateNewNumbers();
+    setNumberSets(allNumbers);
+    setHighlightIndex(highlightIndex);
   };
 
   return (
@@ -55,7 +60,15 @@ function App() {
       <button onClick={handleGenerateNumbers}>번호 생성</button>
       <div className="numberlist-container">
         {numberSets.map((numbers, index) => (
-          <div key={index} className="numberlist">
+          <div
+            key={index}
+            className={`numberlist ${
+              index === highlightIndex ? "highlight" : ""
+            }`}
+          >
+            {index === highlightIndex && (
+              <div className="highlight-message">당첨예감!</div>
+            )}
             {numbers.map((number, numIndex) => (
               <span
                 key={numIndex}

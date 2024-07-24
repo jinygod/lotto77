@@ -95,3 +95,8 @@ button:hover {
 .green {
   background-color: green;
 }
+
+.highlight {
+  border: 2px solid #ff5722; /* 하이라이트 테두리 색상 */
+  background-color: #ffe0b2; /* 하이라이트 배경 색상 */
+}
