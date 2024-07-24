@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
-import { useState } from "react";
 
 function generateNewNumbers() {
   let numbers = [];
@@ -39,9 +38,12 @@ function App() {
   return (
     <div className="lottery-container">
       <div className="title">LOTTO77</div>
-      <div className="subtitle">자신만의 로또번호를 생성하세요</div>
-      <div className="lotto-number"></div>
-      <button onClick={handleGenerateNumbers}>생성</button>
+      <div className="subtitle">자신만의 로또 번호를 생성하세요</div>
+      <p className="description">
+        로또 번호 생성기 LOTTO77은 간편하게 로또 번호를 생성해주는 도구입니다.
+        자신만의 행운 번호를 만들어보세요!
+      </p>
+      <button onClick={handleGenerateNumbers}>번호 생성</button>
       <div className="numberlist-container">
         <div className="numberlist">
           {numbers.map((number, index) => (
