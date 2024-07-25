@@ -22,8 +22,8 @@
 }
 
 .lotto-image {
-  width: 100px;
-  margin-bottom: 20px;
+  width: 80px;
+  margin-bottom: 10px;
 }
 
 .lotto-number {
@@ -76,6 +76,10 @@ button:hover {
   color: #fff;
 }
 
+.mini-description {
+  font-size: 0.7rem;
+}
+
 .yellow {
   background-color: darkgoldenrod;
 }
@@ -96,7 +100,58 @@ button:hover {
   background-color: green;
 }
 
+/* 하이라이트 스타일 */
 .highlight {
-  border: 2px solid #ff5722; /* 하이라이트 테두리 색상 */
-  background-color: #ffe0b2; /* 하이라이트 배경 색상 */
+  border: 2px solid gold;
+  background-color: #ffeb3b;
+  position: relative;
+  animation: shine 1s infinite alternate;
+}
+
+@keyframes shine {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 1);
+  }
+}
+
+.ultra-highlight {
+  border: 3px solid red;
+  background-color: #ffeb3b;
+  position: relative;
+  animation: ultra-shine 1s infinite alternate;
+}
+
+@keyframes ultra-shine {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+  }
+}
+
+.highlight-message {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: gold;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translate(-50%, -20px);
+  }
+  50% {
+    transform: translate(-50%, -30px);
+  }
 }

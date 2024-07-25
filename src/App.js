@@ -3,7 +3,8 @@ import "./App.css";
 
 function generateNewNumbers() {
   let allNumbers = [];
-  let highlightIndex = Math.floor(Math.random() * 5); // 0부터 4까지의 인덱스 중 하나를 선택
+  let highlightIndexes = [];
+  let ultraHighlightIndex = null;
 
   for (let i = 0; i < 5; i++) {
     let numbers = [];
@@ -15,9 +16,19 @@ function generateNewNumbers() {
     }
     numbers.sort((a, b) => a - b); // 오름차순 정렬
     allNumbers.push(numbers);
+
+    // 1% 확률로 highlightIndex 추가
+    if (Math.random() < 0.08) {
+      highlightIndexes.push(i);
+    }
+
+    // 0.01% 확률로 ultraHighlightIndex 설정
+    if (Math.random() < 0.0019) {
+      ultraHighlightIndex = i;
+    }
   }
 
-  return { allNumbers, highlightIndex };
+  return { allNumbers, highlightIndexes, ultraHighlightIndex };
 }
 
 function getClassname(number) {
@@ -36,12 +47,15 @@ function getClassname(number) {
 
 function App() {
   const [numberSets, setNumberSets] = useState([]);
-  const [highlightIndex, setHighlightIndex] = useState(null);
+  const [highlightIndexes, setHighlightIndexes] = useState([]);
+  const [ultraHighlightIndex, setUltraHighlightIndex] = useState(null);
 
   const handleGenerateNumbers = () => {
-    const { allNumbers, highlightIndex } = generateNewNumbers();
+    const { allNumbers, highlightIndexes, ultraHighlightIndex } =
+      generateNewNumbers();
     setNumberSets(allNumbers);
-    setHighlightIndex(highlightIndex);
+    setHighlightIndexes(highlightIndexes);
+    setUltraHighlightIndex(ultraHighlightIndex);
   };
 
   return (
@@ -57,17 +71,27 @@ function App() {
         로또 번호 생성기 LOTTO77은 간편하게 로또 번호를 생성해주는 도구입니다.
         자신만의 행운 번호를 만들어보세요!
       </p>
+      <p className="mini-description">
+        낮은 확률로 나오는 히든번호들을 찾아보세요!
+      </p>
       <button onClick={handleGenerateNumbers}>번호 생성</button>
       <div className="numberlist-container">
         {numberSets.map((numbers, index) => (
           <div
             key={index}
             className={`numberlist ${
-              index === highlightIndex ? "highlight" : ""
+              ultraHighlightIndex === index
+                ? "ultra-highlight"
+                : highlightIndexes.includes(index)
+                ? "highlight"
+                : ""
             }`}
           >
-            {index === highlightIndex && (
-              <div className="highlight-message">당첨예감!</div>
+            {ultraHighlightIndex === index && (
+              <div className="highlight-message">초 히든번호!!!!!!</div>
+            )}
+            {highlightIndexes.includes(index) && (
+              <div className="highlight-message">히든번호!</div>
             )}
             {numbers.map((number, numIndex) => (
               <span
