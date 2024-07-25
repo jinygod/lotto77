@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import generateNewNumbers from "../utils/generateNewNumbers";
 import LotteryNumberList from "./LotteryNumberList";
 
@@ -15,23 +15,7 @@ const NumberGenerator = () => {
     setUltraHighlightIndex(ultraHighlightIndex);
   };
 
-  useEffect(() => {
-    if (ultraHighlightIndex !== null) {
-      addConfetti();
-      // 5초 후 confetti 요소 제거
-      setTimeout(() => {
-        const confettiElements = document.querySelectorAll(".confetti");
-        confettiElements.forEach((element) => element.remove());
-      }, 5000); // 5초 후
-    }
-
-    return () => {
-      const confettiElements = document.querySelectorAll(".confetti");
-      confettiElements.forEach((element) => element.remove());
-    };
-  }, [ultraHighlightIndex]);
-
-  const addConfetti = () => {
+  const addConfetti = useCallback(() => {
     const container = document.querySelector(".lottery-container");
     const containerRect = container.getBoundingClientRect();
 
@@ -43,7 +27,21 @@ const NumberGenerator = () => {
       confetti.style.backgroundColor = getRandomColor(); // 랜덤 색상 설정
       container.appendChild(confetti);
     }
-  };
+  }, []); // 빈 배열로 메모이제이션
+
+  useEffect(() => {
+    if (ultraHighlightIndex !== null) {
+      addConfetti();
+      // 5초 후 confetti 요소 제거
+      const timeoutId = setTimeout(() => {
+        const confettiElements = document.querySelectorAll(".confetti");
+        confettiElements.forEach((element) => element.remove());
+      }, 5000); // 5초 후
+
+      // 타이머 클리어
+      return () => clearTimeout(timeoutId);
+    }
+  }, [ultraHighlightIndex, addConfetti]); // addConfetti 추가
 
   const getRandomColor = () => {
     const colors = [
