@@ -1,10 +1,10 @@
-const generateNewNumbers = () => {
+const generateNewNumbers = (fixedNumbers) => {
   let allNumbers = [];
   let highlightIndexes = [];
   let ultraHighlightIndex = null;
 
   for (let i = 0; i < 5; i++) {
-    let numbers = [];
+    let numbers = [...fixedNumbers]; // 고정 숫자를 포함시킵니다.
     while (numbers.length < 6) {
       let randomNum = Math.ceil(Math.random() * 45);
       if (!numbers.includes(randomNum)) {

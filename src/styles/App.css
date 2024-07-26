@@ -1,7 +1,12 @@
 body {
-  font-family: 'font-name', sans-serif;
+  font-family: "font-name", sans-serif;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .title {
   font-size: 2.5rem; /* 제목 글자 크기 */
@@ -255,4 +260,51 @@ button:hover {
   100% {
     transform: translateY(100vh) translateX(50px) rotate(360deg); /* 화면 아래에서 끝나도록 설정 */
   }
+}
+
+.fixed-number-form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.fixed-number-form input {
+  margin-right: 10px;
+}
+
+.small-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.fixed-number-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.fixed-number-item {
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* 고정번호추가 버튼 스타일 */
+.add-number-button {
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #4caf50; /* 녹색 배경 */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.add-number-button:hover {
+  background-color: #45a049; /* 호버 시 더 진한 녹색 */
 }

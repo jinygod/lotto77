@@ -1,67 +1,28 @@
 import React, { useState } from "react";
 import generateNewNumbers from "../utils/generateNewNumbers";
 import LotteryNumberList from "./LotteryNumberList";
+import FixedNumberInput from "../utils/FixedNumberInput";
 
 const NumberGenerator = () => {
   const [numberSets, setNumberSets] = useState([]);
   const [highlightIndexes, setHighlightIndexes] = useState([]);
   const [ultraHighlightIndex, setUltraHighlightIndex] = useState(null);
+  const [fixedNumbers, setFixedNumbers] = useState([]);
 
   const handleGenerateNumbers = () => {
     const { allNumbers, highlightIndexes, ultraHighlightIndex } =
-      generateNewNumbers();
+      generateNewNumbers(fixedNumbers);
     setNumberSets(allNumbers);
     setHighlightIndexes(highlightIndexes);
     setUltraHighlightIndex(ultraHighlightIndex);
   };
 
-  // 화면 아래까지 내려가는 버그 있어서 잠시 닫음
-  // const addConfetti = useCallback(() => {
-  //   const container = document.querySelector(".lottery-container");
-  //   const containerRect = container.getBoundingClientRect();
-
-  //   for (let i = 0; i < 20; i++) {
-  //     const confetti = document.createElement("div");
-  //     confetti.className = "confetti";
-  //     confetti.style.left = `${Math.random() * (containerRect.width - 12)}px`; // confetti 폭을 제외하여 위치 조정
-  //     confetti.style.top = `${Math.random() * (containerRect.height - 12)}px`; // confetti 높이를 제외하여 위치 조정
-  //     confetti.style.backgroundColor = getRandomColor(); // 랜덤 색상 설정
-  //     container.appendChild(confetti);
-  //   }
-  // }, []); // 빈 배열로 메모이제이션
-
-  // useEffect(() => {
-  //   if (ultraHighlightIndex !== null) {
-  //     addConfetti();
-  //     // 5초 후 confetti 요소 제거
-  //     const timeoutId = setTimeout(() => {
-  //       const confettiElements = document.querySelectorAll(".confetti");
-  //       confettiElements.forEach((element) => element.remove());
-  //     }, 5000); // 5초 후
-
-  //     // 타이머 클리어
-  //     return () => clearTimeout(timeoutId);
-  //   }
-  // }, [ultraHighlightIndex, addConfetti]); // addConfetti 추가
-
-  // const getRandomColor = () => {
-  //   const colors = [
-  //     "#ff6f61",
-  //     "#6ec1e4",
-  //     "#a2d9a4",
-  //     "#f5b7b1",
-  //     "#f7dc6f",
-  //     "#e59866",
-  //     "#9b59b6",
-  //     "#48c9b0",
-  //     "#f39c12",
-  //     "#e74c3c",
-  //   ];
-  //   return colors[Math.floor(Math.random() * colors.length)];
-  // };
-
   return (
-    <div>
+    <div className="container">
+      <FixedNumberInput
+        onFixedNumbersChange={setFixedNumbers}
+        fixedNumbers={fixedNumbers}
+      />
       <button onClick={handleGenerateNumbers}>번호 생성</button>
       <div className="numberlist-container">
         {numberSets.map((numbers, index) => (
