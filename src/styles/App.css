@@ -1,3 +1,8 @@
+body {
+  font-family: 'font-name', sans-serif;
+}
+
+
 .title {
   font-size: 2.5rem; /* 제목 글자 크기 */
   font-weight: bold; /* 제목 굵기 */
