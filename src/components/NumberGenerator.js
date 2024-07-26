@@ -23,7 +23,9 @@ const NumberGenerator = () => {
         onFixedNumbersChange={setFixedNumbers}
         fixedNumbers={fixedNumbers}
       />
-      <button onClick={handleGenerateNumbers}>번호 생성</button>
+      <button onClick={handleGenerateNumbers} className="animated-button">
+        번호 생성
+      </button>
       <div className="numberlist-container">
         {numberSets.map((numbers, index) => (
           <LotteryNumberList

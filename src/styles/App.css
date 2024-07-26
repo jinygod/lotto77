@@ -9,11 +9,14 @@ body {
 }
 
 .title {
-  font-size: 2.5rem; /* 제목 글자 크기 */
+  font-size: 1rem; /* 제목 글자 크기 */
   font-weight: bold; /* 제목 굵기 */
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   color: #333; /* 제목 글자 색상 */
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .subtitle {
@@ -31,7 +34,6 @@ body {
   height: 100vh;
   text-align: center;
   width: 100vw; /* 전체 화면 너비 */
-  overflow: hidden; /* 화면 밖으로 넘어가는 confetti를 숨김 */
 }
 
 .lotto-image {
@@ -45,16 +47,29 @@ body {
   margin-top: 20px;
 }
 
-button {
+.animated-button {
   font-size: 1rem; /* 버튼 글자 크기 */
-  padding: 10px 20px;
-  background-color: #007bff; /* 버튼 배경색 */
+  padding: 12px 24px; /* 버튼 안쪽 여백 */
+  background-color: #ff5722; /* 밝은 오렌지 색상 */
   color: #fff; /* 버튼 글자 색상 */
   border: none;
   cursor: pointer;
   outline: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 25px; /* 둥글게 */
+  transition: transform 0.2s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* 부드러운 그림자 */
+}
+
+.animated-button:hover {
+  background-color: #e64a19; /* 호버 시 색상 변경 */
+  transform: scale(1.05); /* 호버 시 확대 효과 */
+}
+
+.animated-button:active {
+  background-color: #d84315; /* 클릭 시 색상 변경 */
+  transform: scale(0.98); /* 클릭 시 축소 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 감소 */
 }
 
 button:hover {
@@ -196,71 +211,6 @@ button:hover {
       0 0 40px rgba(255, 0, 0, 0.6);
   }
 }
-/* 축하 효과를 위한 스타일 */
-.confetti {
-  position: absolute;
-  top: 0;
-  width: 15px; /* confetti 크기 증가 */
-  height: 15px; /* confetti 크기 증가 */
-  border-radius: 50%;
-  animation: confetti-fall 3s ease-in-out forwards;
-  opacity: 0.9;
-}
-
-/* 색상 및 애니메이션 조정 */
-.confetti:nth-child(1) {
-  background-color: #ff6f61;
-  animation-delay: 0s;
-}
-.confetti:nth-child(2) {
-  background-color: #6ec1e4;
-  animation-delay: 0.1s;
-}
-.confetti:nth-child(3) {
-  background-color: #a2d9a4;
-  animation-delay: 0.2s;
-}
-.confetti:nth-child(4) {
-  background-color: #f5b7b1;
-  animation-delay: 0.3s;
-}
-.confetti:nth-child(5) {
-  background-color: #f7dc6f;
-  animation-delay: 0.4s;
-}
-.confetti:nth-child(6) {
-  background-color: #e59866;
-  animation-delay: 0.5s;
-}
-.confetti:nth-child(7) {
-  background-color: #9b59b6;
-  animation-delay: 0.6s;
-}
-.confetti:nth-child(8) {
-  background-color: #48c9b0;
-  animation-delay: 0.7s;
-}
-.confetti:nth-child(9) {
-  background-color: #f39c12;
-  animation-delay: 0.8s;
-}
-.confetti:nth-child(10) {
-  background-color: #e74c3c;
-  animation-delay: 0.9s;
-}
-
-/* 애니메이션 효과 */
-@keyframes confetti-fall {
-  0% {
-    transform: translateY(-100px) translateX(-100px) rotate(0deg); /* 시작 위치 조정 */
-  }
-  50% {
-    transform: translateY(50vh) translateX(-50px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(100vh) translateX(50px) rotate(360deg); /* 화면 아래에서 끝나도록 설정 */
-  }
-}
 
 .fixed-number-form {
   display: flex;
@@ -272,39 +222,123 @@ button:hover {
   margin-right: 10px;
 }
 
-.small-button {
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 .fixed-number-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  gap: 10px; /* 아이템 사이의 간격 */
 }
 
 .fixed-number-item {
-  background-color: #eee;
-  padding: 5px 10px;
-  border-radius: 5px;
+  background-color: #ff5722; /* 배경색 */
+  color: #fff; /* 글자 색상 */
+  padding: 8px 8px; /* 안쪽 여백 */
+  border-radius: 50%; /* 원형 버튼 */
+  font-size: 1rem; /* 글자 크기 */
   cursor: pointer;
+  width: 20px; /* 고정된 너비 */
+  height: 20px; /* 고정된 높이 */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* 고정번호추가 버튼 스타일 */
-.add-number-button {
-  padding: 5px 10px;
-  font-size: 14px;
-  cursor: pointer;
-  background-color: #4caf50; /* 녹색 배경 */
-  color: white;
+.fixed-number-item:hover {
+  background-color: #e64a19; /* 호버 시 색상 변화 */
+  transform: scale(1.1); /* 호버 시 확대 효과 */
+}
+
+.fixed-number-item:active {
+  background-color: #d84315; /* 클릭 시 색상 변화 */
+  transform: scale(0.95); /* 클릭 시 축소 효과 */
+}
+
+/* 고정번호추가 */
+.fixed-number-form {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 버튼과 입력 필드 사이의 간격 */
+}
+
+.number-input {
+  border: 1px solid #ccc; /* 연한 회색 테두리 */
+  border-radius: 5px; /* 둥글게 */
+  padding: 10px; /* 안쪽 여백 */
+  font-size: 16px; /* 폰트 크기 */
+  width: 150px; /* 너비 조정 */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 효과 */
+}
+
+.number-input::placeholder {
+  color: #888; /* 회색 placeholder 텍스트 */
+}
+
+.number-input:focus {
+  border-color: #007bff; /* 포커스 시 테두리 색상 */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* 포커스 시 그림자 추가 */
+  outline: none; /* 기본 포커스 테두리 제거 */
+}
+
+.add-fixed-number-button {
+  background-color: #28a745; /* 녹색 배경 */
+  color: white; /* 흰색 글씨 */
   border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 25px; /* 둥글게 */
+  padding: 8px 16px; /* 안쪽 여백 */
+  font-size: 12px; /* 폰트 크기 */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* 애니메이션 효과 */
 }
 
-.add-number-button:hover {
-  background-color: #45a049; /* 호버 시 더 진한 녹색 */
+.add-fixed-number-button:hover {
+  background-color: #218838; /* 호버 시 색상 변경 */
+}
+
+.add-fixed-number-button:active {
+  background-color: #1e7e34; /* 클릭 시 색상 변경 */
+  transform: scale(0.98); /* 클릭 시 버튼 축소 효과 */
+}
+
+/* title fade in fade out */
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fixed-number-container {
+  border: 2px solid #ddd; /* 연한 회색 테두리 */
+  border-radius: 10px; /* 둥글게 */
+  padding: 15px; /* 안쪽 여백 */
+  min-height: 80px; /* 고정된 최소 높이 */
+  margin: 20px 0; /* 상하 여백 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  background-color: #f9f9f9; /* 배경색 */
+}
+
+.number-input::placeholder {
+  color: #aaa; /* 플레이스홀더 색상 */
+  font-size: 0.7rem; /* 플레이스홀더 글자 크기 조정 */
+}
+
+/* Error icon styles */
+.error-icon {
+  position: absolute;
+  right: 00px; /* Positioning error icon */
+  transform: translateX(-20%) translateY(-100%);
+  display: flex;
+  align-items: center;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  background-color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #e74c3c;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
 }

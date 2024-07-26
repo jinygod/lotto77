@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./styles/App.css";
 import NumberGenerator from "./components/NumberGenerator";
 
 function App() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const titles = [
+    "LOTTO77",
+    "자신만의 특별한 로또 번호를 생성하세요",
+    "히든번호가 숨어있어요!",
+    "고정번호를 추가할 수 있어요!",
+    "고정번호를 제외한 나머지 번호는 랜덤이에요",
+    "TMI: 평균 1등 당첨금액은	2,034,590,933원이에요!",
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % titles.length);
+        setFade(true);
+      }, 500); // 페이드 아웃 시간
+    }, 5000); // 5초마다 변경
+
+    return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
+  }, []);
+
   return (
     <div className="lottery-container">
       <img
@@ -10,14 +34,9 @@ function App() {
         alt="Lotto"
         className="lotto-image"
       />
-      <div className="title">LOTTO77</div>
-      <div className="subtitle">자신만의 로또 번호를 생성하세요</div>
-      <p className="description">
-        로또 번호 생성기 LOTTO77은 간편하게 로또 번호를 생성해주는 도구입니다.
-      </p>
-      <p className="mini-description">
-        낮은 확률로 나오는 히든번호들을 찾아보세요!
-      </p>
+      <div className={`title ${fade ? "fade-in" : "fade-out"}`}>
+        {titles[currentIndex]}
+      </div>
       <NumberGenerator />
     </div>
   );
