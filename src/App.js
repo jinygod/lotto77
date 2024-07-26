@@ -25,7 +25,7 @@ function App() {
     }, 5000); // 5초마다 변경
 
     return () => clearInterval(interval); // 컴포넌트 언마운트 시 인터벌 정리
-  }, []);
+  }, [titles.length]);
 
   return (
     <div className="lottery-container">
