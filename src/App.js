@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./styles/App.css";
+import Header from "./components/Header";
 import NumberGenerator from "./components/NumberGenerator";
+import LotteryImage from "./components/LotteryImage";
+import Title from "./components/Title";
+import Footer from "./components/Footer";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   const titles = [
-    "LOTTO77",
+    "안녕하세요, LOTTO77입니다",
     "자신만의 특별한 로또 번호를 생성하세요",
     "히든번호가 숨어있어요!",
     "고정번호를 추가할 수 있어요!",
     "고정번호를 제외한 나머지 번호는 랜덤이에요",
-    "TMI: 평균 1등 당첨금액은	2,034,590,933원이에요!",
+    "TMI: 평균 1등 당첨금액은 2,034,590,933원이에요!",
+    "TMI: 최고 1등 당첨금은	407억 2295만원이에요!",
+    "TMI: 복권당첨자가 꾼 꿈 중 47%는 조상꿈이래요!",
   ];
 
   useEffect(() => {
@@ -28,17 +34,17 @@ function App() {
   }, [titles.length]);
 
   return (
-    <div className="lottery-container">
-      <img
-        src={`${process.env.PUBLIC_URL}/main.png`}
-        alt="Lotto"
-        className="lotto-image"
-      />
-      <div className={`title ${fade ? "fade-in" : "fade-out"}`}>
-        {titles[currentIndex]}
+    <>
+      <Header />
+      <div className="lottery-container-wrapper">
+        <div className="lottery-container">
+          <LotteryImage />
+          <Title text={titles[currentIndex]} fade={fade} />
+          <NumberGenerator />
+        </div>
       </div>
-      <NumberGenerator />
-    </div>
+      <Footer />
+    </>
   );
 }
 

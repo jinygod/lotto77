@@ -1,5 +1,7 @@
-body {
-  font-family: "font-name", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .container {
@@ -8,22 +10,11 @@ body {
   align-items: center;
 }
 
-.title {
-  font-size: 1rem; /* 제목 글자 크기 */
-  font-weight: bold; /* 제목 굵기 */
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #333; /* 제목 글자 색상 */
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.subtitle {
-  font-size: 1.2rem; /* 부제목 글자 크기 */
-  text-align: center;
-  margin-bottom: 20px;
-  color: #666; /* 부제목 글자 색상 */
+.lottery-container-wrapper {
+  width: 100vw; /* 전체 화면 너비 */
+  display: flex;
+  justify-content: center; /* 자식 요소를 중앙에 배치 */
+  align-items: center; /* 자식 요소를 세로로 중앙에 배치 */
 }
 
 .lottery-container {
@@ -33,12 +24,8 @@ body {
   justify-content: center;
   height: 100vh;
   text-align: center;
-  width: 100vw; /* 전체 화면 너비 */
-}
-
-.lotto-image {
-  width: 80px;
-  margin-bottom: 10px;
+  max-width: 1200px;
+  width: 1200px;
 }
 
 .lotto-number {
@@ -299,15 +286,6 @@ button:hover {
 .add-fixed-number-button:active {
   background-color: #1e7e34; /* 클릭 시 색상 변경 */
   transform: scale(0.98); /* 클릭 시 버튼 축소 효과 */
-}
-
-/* title fade in fade out */
-.fade-in {
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0;
 }
 
 .fixed-number-container {
