@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import getClassname from "../utils/getClassname";
 
 const FixedNumberInput = ({ onFixedNumbersChange, fixedNumbers = [] }) => {
   const [inputValue, setInputValue] = useState("");
@@ -26,7 +27,8 @@ const FixedNumberInput = ({ onFixedNumbersChange, fixedNumbers = [] }) => {
       return;
     }
 
-    onFixedNumbersChange((prev) => [...prev, number]);
+    const updatedNumbers = [...fixedNumbers, number].sort((a, b) => a - b);
+    onFixedNumbersChange(updatedNumbers);
     setInputValue("");
     setError("");
   };
@@ -59,7 +61,7 @@ const FixedNumberInput = ({ onFixedNumbersChange, fixedNumbers = [] }) => {
         {fixedNumbers.map((number, index) => (
           <span
             key={index}
-            className="fixed-number-item"
+            className={`fixed-number-item ${getClassname(number)}`} // 동적 클래스 추가
             onClick={() => handleRemoveNumber(number)}
           >
             {number}

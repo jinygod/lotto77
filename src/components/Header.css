@@ -16,6 +16,7 @@
 
 /* 로고 스타일 */
 .logo {
+  margin-left: 10px;
   font-size: 32px;
   font-weight: bold;
   color: #8b0000; /* 다크 레드 텍스트 */

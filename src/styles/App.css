@@ -96,23 +96,28 @@ button:hover {
 }
 
 .yellow {
-  background-color: darkgoldenrod;
+  background-color: #fbc400;
+  text-shadow: 0px 0px 3px rgba(73, 57, 0, 0.8);
 }
 
 .skyblue {
-  background-color: #6495ed; /* 코발트 블루 */
+  background-color: #69c8f2; /* 코발트 블루 */
+  text-shadow: 0px 0px 3px rgba(0, 49, 70, 0.8);
 }
 
 .lightpink {
-  background-color: #ff69b4; /* 핫 핑크 */
+  background-color: #ff7272; /* 핫 핑크 */
+  text-shadow: 0px 0px 3px rgba(64, 0, 0, 0.8);
 }
 
 .gray {
-  background-color: gray;
+  background-color: #aaa;
+  text-shadow: 0px 0px 3px rgba(61, 61, 61, 0.8);
 }
 
 .green {
-  background-color: green;
+  background-color: #b0d840;
+  text-shadow: 0px 0px 3px rgba(41, 56, 0, 0.8);
 }
 
 /* 하이라이트 스타일 */
@@ -216,11 +221,10 @@ button:hover {
 }
 
 .fixed-number-item {
-  background-color: #ff5722; /* 배경색 */
   color: #fff; /* 글자 색상 */
   padding: 8px 8px; /* 안쪽 여백 */
   border-radius: 50%; /* 원형 버튼 */
-  font-size: 1rem; /* 글자 크기 */
+  font-size: 0.8rem; /* 글자 크기 */
   cursor: pointer;
   width: 20px; /* 고정된 너비 */
   height: 20px; /* 고정된 높이 */
@@ -231,12 +235,10 @@ button:hover {
 }
 
 .fixed-number-item:hover {
-  background-color: #e64a19; /* 호버 시 색상 변화 */
   transform: scale(1.1); /* 호버 시 확대 효과 */
 }
 
 .fixed-number-item:active {
-  background-color: #d84315; /* 클릭 시 색상 변화 */
   transform: scale(0.95); /* 클릭 시 축소 효과 */
 }
 
