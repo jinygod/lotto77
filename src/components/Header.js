@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -40,8 +41,12 @@ const Header = () => {
           <button className="close-button" onClick={toggleMenu}>
             &times;
           </button>
-          <span>로또뽑기</span>
-          <span>로또통계</span>
+          <Link to="/" onClick={toggleMenu}>
+            로또뽑기
+          </Link>
+          <Link to="/statistics" onClick={toggleMenu}>
+            로또통계
+          </Link>
         </nav>
       </header>
     </div>

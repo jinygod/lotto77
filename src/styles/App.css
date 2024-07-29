@@ -220,6 +220,7 @@ body,
   display: flex;
   flex-wrap: wrap;
   gap: 10px; /* 아이템 사이의 간격 */
+  margin: 10px 0 0 0;
 }
 
 .fixed-number-item {

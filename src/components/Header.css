@@ -28,14 +28,15 @@
   gap: 20px;
 }
 
-.menu span {
+.menu a {
   font-size: 18px;
   color: #fff; /* 흰색 텍스트 */
   cursor: pointer;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
-.menu span:hover {
+.menu a:hover {
   color: #8b0000; /* 다크 레드로 호버 효과 */
 }
 
@@ -45,7 +46,7 @@
   font-size: 24px;
   color: #fff;
   cursor: pointer;
-  margin: 0 30px 0 0;
+  margin: 0 10px 0 0;
 }
 
 /* 모바일 스타일 */

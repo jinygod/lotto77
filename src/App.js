@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./styles/App.css";
 import Header from "./components/Header";
 import NumberGenerator from "./components/NumberGenerator";
 import LotteryImage from "./components/LotteryImage";
 import Title from "./components/Title";
 import Footer from "./components/Footer";
+import Statistics from "./components/Statistics";
 
-function App() {
+function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -17,7 +19,7 @@ function App() {
     "고정번호를 추가할 수 있어요!",
     "고정번호를 제외한 나머지 번호는 랜덤이에요",
     "TMI: 평균 1등 당첨금액은 2,034,590,933원이에요!",
-    "TMI: 최고 1등 당첨금은	407억 2295만원이에요!",
+    "TMI: 최고 1등 당첨금은 407억 2295만원이에요!",
     "TMI: 복권당첨자가 꾼 꿈 중 47%는 조상꿈이래요!",
   ];
 
@@ -34,17 +36,28 @@ function App() {
   }, [titles.length]);
 
   return (
-    <div className="container">
-      <Header />
-      <div className="lottery-container-wrapper">
-        <div className="lottery-container">
-          <LotteryImage />
-          <Title text={titles[currentIndex]} fade={fade} />
-          <NumberGenerator />
-        </div>
+    <div className="lottery-container-wrapper">
+      <div className="lottery-container">
+        <LotteryImage />
+        <Title text={titles[currentIndex]} fade={fade} />
+        <NumberGenerator />
       </div>
-      <Footer />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/statistics" element={<Statistics />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
