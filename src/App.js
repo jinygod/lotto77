@@ -34,7 +34,7 @@ function App() {
   }, [titles.length]);
 
   return (
-    <>
+    <div className="container">
       <Header />
       <div className="lottery-container-wrapper">
         <div className="lottery-container">
@@ -44,7 +44,7 @@ function App() {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

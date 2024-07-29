@@ -4,10 +4,16 @@
   box-sizing: border-box;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  min-height: 100vh;
 }
 
 .lottery-container-wrapper {
@@ -15,6 +21,7 @@
   display: flex;
   justify-content: center; /* 자식 요소를 중앙에 배치 */
   align-items: center; /* 자식 요소를 세로로 중앙에 배치 */
+  flex: 1;
 }
 
 .lottery-container {
@@ -22,10 +29,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   text-align: center;
   max-width: 1200px;
   width: 1200px;
+  padding: 50px 0 50px 0;
 }
 
 .lotto-number {
@@ -57,10 +64,6 @@
   background-color: #d84315; /* 클릭 시 색상 변경 */
   transform: scale(0.98); /* 클릭 시 축소 효과 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 감소 */
-}
-
-button:hover {
-  background-color: #0056b3; /* 호버 시 버튼 배경색 변경 */
 }
 
 .numberlist-container {
@@ -207,7 +210,6 @@ button:hover {
 .fixed-number-form {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .fixed-number-form input {

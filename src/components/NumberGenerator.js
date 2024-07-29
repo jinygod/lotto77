@@ -18,7 +18,7 @@ const NumberGenerator = () => {
   };
 
   return (
-    <div className="container">
+    <div className="generator-container">
       <FixedNumberInput
         onFixedNumbersChange={setFixedNumbers}
         fixedNumbers={fixedNumbers}
