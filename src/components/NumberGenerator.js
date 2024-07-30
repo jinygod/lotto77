@@ -12,7 +12,8 @@ const NumberGenerator = () => {
   const [ultraHighlightIndex, setUltraHighlightIndex] = useState(null);
   const [fixedNumbers, setFixedNumbers] = useState([]);
   const [sessionId, setSessionId] = useState("");
-  const [userId, setUserId] = useState("guest"); // 기본값은 'guest'
+  // const [userId, setUserId] = useState("guest"); // 기본값은 'guest'
+  const userId = "guest";
 
   useEffect(() => {
     // 컴포넌트가 처음 렌더링될 때 세션 ID 생성
