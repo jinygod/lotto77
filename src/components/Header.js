@@ -8,7 +8,7 @@ const Header = () => {
   const menuButtonRef = useRef(null);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
   const closeMenu = (event) => {
@@ -41,12 +41,18 @@ const Header = () => {
           <button className="close-button" onClick={toggleMenu}>
             &times;
           </button>
-          <Link to="/" onClick={toggleMenu}>
-            로또뽑기
-          </Link>
-          <Link to="/statistics" onClick={toggleMenu}>
-            로또통계
-          </Link>
+          <div className="main-menu">
+            <span>LOTTO77 ｜ </span>
+            <span>로또복권</span>
+          </div>
+          <div className="sub-menu">
+            <Link to="/" onClick={toggleMenu}>
+              <span>로또복권 ｜</span> 로또번호뽑기
+            </Link>
+            <Link to="/statistics" onClick={toggleMenu}>
+              <span>로또복권 ｜</span> 로또통계
+            </Link>
+          </div>
         </nav>
       </header>
     </div>

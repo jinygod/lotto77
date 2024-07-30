@@ -8,6 +8,7 @@ html,
 body,
 #root {
   height: 100%;
+  overflow-x: hidden; /* 100vw에서 생기는 가로스크롤 문제 해결 */
 }
 
 .container {

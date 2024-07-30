@@ -66,7 +66,7 @@
     position: fixed;
     top: 0;
     right: 0;
-    width: 200px; /* 사이드바 너비 */
+    width: 250px; /* 사이드바 너비 */
     height: 100vh; /* 사이드바 전체 높이 */
     background-color: #161b33;
     transform: translateX(100%); /* 기본적으로 숨김 */
@@ -79,14 +79,55 @@
     transform: translateX(0); /* 메뉴가 오른쪽에서 슬라이드되어 나타남 */
   }
 
-  .menu span {
-    font-size: 16px; /* 메뉴 항목 크기 조정 */
+  .main-menu {
+    background-color: #0d0c1d;
+    font-size: 12px; /* 대메뉴 크기 */
+    color: #fff; /* 흰색 텍스트 */
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 5px 0 5px 0;
+  }
+
+  .main-menu span:first-child {
+    font-size: 10px;
+    margin-left: 12px;
+    color: gray;
+  }
+
+  .sub-menu {
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 애니메이션 추가 */
+  }
+
+  .menu.open .sub-menu {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sub-menu a {
+    font-size: 16px; /* 서브메뉴 크기 */
     color: #fff; /* 흰색 텍스트 */
     cursor: pointer;
     transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 14px 12px;
+    margin: 0 0 0 12px;
   }
 
-  .menu span:hover {
+  .sub-menu span {
+    font-size: 12px;
+    color: gray;
+  }
+
+  .sub-menu:last-child {
+    border-bottom: 1px solid gray;
+    padding-bottom: 15px;
+  }
+
+  .sub-menu a:hover {
     color: #8b0000; /* 다크 레드로 호버 효과 */
   }
 
@@ -108,7 +149,20 @@
   .close-button:hover {
     color: #8b0000; /* 다크 레드로 호버 효과 */
   }
+
+  /* 슬라이드 애니메이션 */
+  @keyframes slideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
+
 /* 웹 화면에서 사이드 메뉴 닫기 버튼 완전히 숨기기 */
 @media (min-width: 769px) {
   .menu {
@@ -118,5 +172,14 @@
 
   .close-button {
     display: none; /* 웹 화면에서는 사이드 메뉴 닫기 버튼 숨기기 */
+  }
+
+  .main-menu {
+    display: none; /* 웹 화면에서는 대메뉴 숨기기 */
+  }
+
+  .sub-menu {
+    display: flex;
+    gap: 20px;
   }
 }
