@@ -117,7 +117,7 @@
     margin: 0 0 0 12px;
   }
 
-  .sub-menu span {
+  .sub-menu a span {
     font-size: 12px;
     color: gray;
   }
@@ -181,5 +181,9 @@
   .sub-menu {
     display: flex;
     gap: 20px;
+  }
+
+  .sub-menu span {
+    display: none;
   }
 }

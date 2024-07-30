@@ -1,14 +1,14 @@
 const getClassname = (number) => {
   if (number >= 1 && number <= 10) {
-    return "yellow";
+    return "ball_type1";
   } else if (number >= 11 && number <= 20) {
-    return "skyblue";
+    return "ball_type2";
   } else if (number >= 21 && number <= 30) {
-    return "lightpink";
+    return "ball_type3";
   } else if (number >= 31 && number <= 40) {
-    return "gray";
+    return "ball_type4";
   } else if (number >= 41 && number <= 45) {
-    return "green";
+    return "ball_type5";
   }
 };
 
