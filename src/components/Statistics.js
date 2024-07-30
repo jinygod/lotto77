@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../utils/firebase";
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import "./Statistics.css";
 
 // Chart.js 등록
@@ -13,26 +13,24 @@ const Statistics = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Firebase DB: ", db);
-    const fetchData = async () => {
-      try {
-        const snapshot = await getDocs(collection(db, "lottoNumbers"));
+    const unsubscribe = onSnapshot(
+      collection(db, "lottoNumbers"),
+      (snapshot) => {
         const dataList = snapshot.docs.map((doc) => doc.data());
         setData(dataList);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      } finally {
         setLoading(false);
+      },
+      (error) => {
+        console.error("Error fetching data: ", error);
       }
-    };
+    );
 
-    fetchData();
+    // 컴포넌트 언마운트 시 구독 해제
+    return () => unsubscribe();
   }, []);
 
   const processData = () => {
-    // 데이터 처리 로직 (구간별 및 개별 번호별 통계 계산)
-    // 예시: 데이터를 기반으로 구간별 빈도수 계산
-    const bins = [0, 0, 0, 0, 0]; // 구간 [1-10, 11-20, 21-30, 31-40, 41-45]
+    const bins = [0, 0, 0, 0, 0];
 
     data.forEach((entry) => {
       entry.numbers.forEach((number) => {
