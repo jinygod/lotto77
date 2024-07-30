@@ -47,7 +47,10 @@ const Header = () => {
           </div>
           <div className="sub-menu">
             <Link to="/" onClick={toggleMenu}>
-              <span>로또복권 ｜</span> 로또번호뽑기
+              <span>로또복권 ｜</span> 로또번호생성
+            </Link>
+            <Link to="/result" onClick={toggleMenu}>
+              <span>로또복권 ｜</span> 로또번호생성결과
             </Link>
             <Link to="/statistics" onClick={toggleMenu}>
               <span>로또복권 ｜</span> 로또통계

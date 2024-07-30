@@ -53,6 +53,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Home />} />
+          {/* <Route exact path="/result" element={<Result />} /> */}
           <Route path="/statistics" element={<Statistics />} />
         </Routes>
         <Footer />
