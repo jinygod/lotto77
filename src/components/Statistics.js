@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../utils/firebase";
 import { Chart, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { collection, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import "./Statistics.css";
 
 // Chart.js 등록
@@ -14,14 +14,17 @@ const Statistics = () => {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(db, "lottoNumbers"),
-      (snapshot) => {
-        const dataList = snapshot.docs.map((doc) => doc.data());
-        setData(dataList);
+      doc(db, "aggregatedData", "lottoStats"),
+      (doc) => {
+        const docData = doc.data();
+        if (docData && docData.lottoNumbers) {
+          setData(docData.lottoNumbers);
+        }
         setLoading(false);
       },
       (error) => {
         console.error("Error fetching data: ", error);
+        setLoading(false);
       }
     );
 
