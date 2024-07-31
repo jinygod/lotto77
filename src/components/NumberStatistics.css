@@ -1,0 +1,28 @@
+.number-statistics-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#chart-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .number-statistics-container {
+    padding: 10px;
+  }
+
+  #chart-container {
+    max-width: 100%;
+  }
+}

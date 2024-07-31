@@ -6,7 +6,7 @@ import NumberGenerator from "./components/NumberGenerator";
 import LotteryImage from "./components/LotteryImage";
 import Title from "./components/Title";
 import Footer from "./components/Footer";
-import Statistics from "./components/Statistics";
+import StatisticsPage from "./components/StatisticsPage";
 
 function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,7 +54,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           {/* <Route exact path="/result" element={<Result />} /> */}
-          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/statistics" element={<StatisticsPage />} />
         </Routes>
         <Footer />
       </div>
