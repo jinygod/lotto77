@@ -75,6 +75,9 @@ const RangeStatistics = () => {
   const chartOptions = {
     responsive: true,
     plugins: {
+      legend: {
+        position: "bottom", // 범례를 하단으로 이동
+      },
       datalabels: {
         formatter: (value, context) => {
           const total = context.chart._metasets[0].total;

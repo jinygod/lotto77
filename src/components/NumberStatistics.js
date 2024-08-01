@@ -77,6 +77,9 @@ const NumberStatistics = () => {
   const chartOptions = {
     responsive: true,
     plugins: {
+      legend: {
+        display: false,
+      },
       datalabels: {
         display: false,
       },
